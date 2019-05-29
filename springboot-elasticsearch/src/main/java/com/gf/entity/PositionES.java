@@ -1,33 +1,38 @@
 package com.gf.entity;
 
-public class Position {
 
-    private int positionid;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+
+import java.io.Serializable;
+
+@Document(indexName = "position", type = "doc")
+public class PositionES{
+
+    @Id
+    private Integer positionid;
+
     private String companyId;
-    private String positions;
-    private String postype;
-    private String posdate;
-    private String posnum;
-    private String posdes;
-    private String posreq;
-    private String possal;
-    private String posphone;
-    private String posloc;
 
-    public static Position from(PositionES positionEs) {
-        Position position = new Position();
-        position.setPositionid(positionEs.getPositionid());
-        position.setCompanyId(positionEs.getCompanyId());
-        position.setPositions(positionEs.getPositions());
-        position.setPostype(positionEs.getPostype());
-        position.setPosdate(positionEs.getPosdate());
-        position.setPosnum(positionEs.getPosnum());
-        position.setPosdes(positionEs.getPosdes());
-        position.setPosreq(positionEs.getPosreq());
-        position.setPossal(positionEs.getPossal());
-        position.setPosloc(positionEs.getPosloc());
-        return position;
-    }
+    private String positions;
+
+    private String postype;
+
+    private String posdate;
+
+    private String posnum;
+
+    private String posdes;
+
+    private String posreq;
+
+    private String possal;
+
+    private String posphone;
+
+    private String posloc;
 
 
     public int getPositionid() {
@@ -117,5 +122,4 @@ public class Position {
     public void setPosloc(String posloc) {
         this.posloc = posloc;
     }
-
 }

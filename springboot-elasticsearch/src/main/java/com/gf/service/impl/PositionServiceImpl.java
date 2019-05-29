@@ -2,18 +2,24 @@ package com.gf.service.impl;
 
 import com.gf.dao.IPositionDao;
 import com.gf.entity.Position;
+import com.gf.entity.PositionES;
+import com.gf.repository.PositionRepository;
 import com.gf.service.IPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class PositionServiceImpl implements IPositionService {
 
     @Autowired
     private IPositionDao positionDao;
+
+    @Autowired
+    private PositionRepository positionRepository;
 
     @Override
     public List<Position> getAllPosition(){
@@ -89,8 +95,13 @@ public class PositionServiceImpl implements IPositionService {
             return positionDetail;
         }
 
-
-
-
+    @Override
+    public List<Position> searchPosition(String key) {
+        List<PositionES> positionESList = positionRepository.findByPositions(key);
+        List<Position> positionList = positionESList.stream()
+                .map(positionEs -> Position.from(positionEs))
+                .collect(Collectors.toList());
+        return positionList;
     }
+}
 

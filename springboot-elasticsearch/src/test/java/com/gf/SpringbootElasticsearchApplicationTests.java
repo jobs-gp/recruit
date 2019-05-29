@@ -2,7 +2,9 @@ package com.gf;
 
 import com.gf.entity.Article;
 import com.gf.entity.Book;
+import com.gf.entity.PositionES;
 import com.gf.repository.BookRepository;
+import com.gf.repository.PositionRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,9 @@ public class SpringbootElasticsearchApplicationTests {
 	@Autowired
 	BookRepository bookRepository;
 
+	@Autowired
+    private PositionRepository positionRepository;
+
 	@Test
 	public void createIndex2(){
 		Book book = new Book();
@@ -29,9 +34,10 @@ public class SpringbootElasticsearchApplicationTests {
 
 	@Test
 	public void useFind() {
-		List<Book> list = bookRepository.findByBookNameLike( "游" );
-		for (Book book : list) {
-			System.out.println(book);
+//		List<Book> list = bookRepository.findByBookNameLike( "游" );
+        List<PositionES> positionESList = positionRepository.findByPositions("工程师");
+		for (PositionES positionES : positionESList) {
+			System.out.println(positionES.getPositions());
 		}
 
 	}

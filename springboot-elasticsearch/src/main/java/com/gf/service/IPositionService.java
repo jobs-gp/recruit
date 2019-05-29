@@ -28,6 +28,13 @@ public interface IPositionService {
     List<Position> getCompanyPosition(String positionid);
 
     /**
+     * 查询ES
+     * @param key
+     * @return
+     */
+    List<Position> searchPosition(String key);
+
+    /**
      * 根据职位ID查出投递编号、用户编号、简历编号
      * @return
      */

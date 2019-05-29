@@ -124,5 +124,16 @@ public class PositionController {
         return "position/companyPositionDetail";
     }
 
-
+    /**
+     * 通过es查询职位信息
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "searchPosition", method = RequestMethod.GET)
+    public String searchPosition(HttpServletRequest request) {
+        String key = request.getParameter("position");
+        List<Position> search = positionService.searchPosition(key);
+        request.setAttribute("search",search);
+        return "position/esSearchPosition";
+    }
 }

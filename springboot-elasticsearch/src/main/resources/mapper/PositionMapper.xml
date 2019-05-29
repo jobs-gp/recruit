@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gf.dao.IPositionDao">
+    <resultMap id="BaseResultMap" type="com.gf.entity.Position">
+        <id column="positionid" jdbcType="INTEGER" property="positionid" />
+        <result column="companyId" jdbcType="VARCHAR" property="companyId" />
+        <result column="positions" jdbcType="VARCHAR" property="positions" />
+        <result column="postype" jdbcType="VARCHAR" property="postype" />
+        <result column="posdate" jdbcType="VARCHAR" property="posdate" />
+        <result column="posnum" jdbcType="VARCHAR" property="posnum" />
+        <result column="posdes" jdbcType="VARCHAR" property="posdes" />
+        <result column="posreq" jdbcType="VARCHAR" property="posreq" />
+        <result column="possal" jdbcType="VARCHAR" property="possal" />
+        <result column="posphone" jdbcType="VARCHAR" property="posphone" />
+        <result column="posloc" jdbcType="VARCHAR" property="posloc" />
+    </resultMap>
+    <sql id="Base_Column_List">
+      positionid, companyId, positions, postype,
+      posdate, posnum, posdes, posreq, possal, posphone, posloc
+    </sql>
+
+    <select id="findPositionByCompanyId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_position t
+        where t.companyId = #{companyId, jdbcType = VARCHAR}
+    </select>
+
+    <select id="getAllPositions" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_position
+    </select>
+
+    <select id="hrSelectById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_position
+        where companyId = #{companyId, jdbcType = VARCHAR}
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_position
+        where positionid=#{positionid,jdbcType=INTEGER}
+    </select>
+
+    <select id="getPersonPositions" parameterType="com.gf.entity.Position" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_position
+
+    </select>
+
+    <insert id="insertPositions" parameterType="com.gf.entity.Position">
+        insert into t_position(companyId,positions, postype, posdate, posnum, posdes, posreq, possal, posphone, posloc)
+        values (#{companyId,jdbcType=VARCHAR},#{positions,jdbcType=VARCHAR},#{postype,jdbcType=VARCHAR},#{posdate,jdbcType=VARCHAR},#{posnum,jdbcType=VARCHAR},#{posdes,jdbcType=VARCHAR},#{posreq,jdbcType=VARCHAR},#{possal,jdbcType=VARCHAR},#{posphone,jdbcType=VARCHAR},#{posloc,jdbcType=VARCHAR})
+    </insert>
+
+    <select id="findPositionById" resultMap="BaseResultMap">
+      select
+      <include refid="Base_Column_List"/>
+      from t_position
+      where positionid=#{positionid,jdbcType=INTEGER}
+    </select>
+
+    <update id="updateposition" parameterType="com.gf.entity.Position">
+      update t_position
+      set positions =#{positions,jdbcType=VARCHAR},
+      postype =#{postype,jdbcType=VARCHAR},
+      posdate =#{posdate,jdbcType=VARCHAR},
+      posnum =#{posnum,jdbcType=VARCHAR},
+      posdes =#{posdes,jdbcType=VARCHAR},
+      possal=#{possal,jdbcType=VARCHAR},
+      posphone =#{posphone,jdbcType=VARCHAR},
+      posloc =#{posloc,jdbcType=VARCHAR}
+      where positionid = #{positionid,jdbcType=INTEGER}
+    </update>
+
+    <delete id="deletePosition" parameterType="com.gf.entity.Position">
+      delete from t_position
+      where positionid = #{positionid,jdbcType=INTEGER}
+    </delete>
+
+
+    <select id="selectCompanyPosition" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_position
+        where positionid=#{positionid,jdbcType=INTEGER}
+    </select>
+</mapper>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gf.dao.IEmployDao">
+    <resultMap id="BaseResultMap" type="com.gf.entity.Employ">
+        <id column="autoId" jdbcType="INTEGER" property="autoId" />
+        <result column="userid" jdbcType="INTEGER" property="userid" />
+        <result column="realname" jdbcType="VARCHAR" property="realName" />
+        <result column="sex" jdbcType="VARCHAR" property="sex" />
+        <result column="age" jdbcType="INTEGER" property="age" />
+        <result column="account" jdbcType="VARCHAR" property="account" />
+        <result column="pwd" jdbcType="VARCHAR" property="pwd" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+     autoId,userid,realname,sex,age,account,pwd
+    </sql>
+
+    <select id="findEmploy" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_employ
+        <where>
+            <if test="account!=null">
+                and account=#{account,jdbcType=VARCHAR}
+            </if>
+            <if test="pwd!=null">
+                and pwd=#{pwd,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addEmploy" parameterType="com.gf.entity.Employ">
+        insert into t_employ(account,pwd,realname,sex,age,userid)
+        values (#{account,jdbcType=VARCHAR},#{pwd,jdbcType=VARCHAR},#{realName,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR},#{age,jdbcType=INTEGER},#{userid,jdbcType=INTEGER})
+    </insert>
+</mapper>

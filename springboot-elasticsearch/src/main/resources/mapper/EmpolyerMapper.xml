@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gf.dao.IEmpolyerDao">
+    <resultMap id="BaseResultMap" type="com.gf.entity.Employer">
+        <id column="autoId" jdbcType="INTEGER" property="autoId" />
+        <result column="companyId" jdbcType="VARCHAR" property="companyId" />
+        <result column="employerName" jdbcType="VARCHAR" property="employerName" />
+        <result column="employerPwd" jdbcType="VARCHAR" property="employerPwd" />
+        <result column="employerAddress" jdbcType="VARCHAR" property="employerAddress" />
+        <result column="employerTel" jdbcType="VARCHAR" property="employerTel" />
+        <result column="employerEmail" jdbcType="VARCHAR" property="employerEmail" />
+        <result column="employerAccount" jdbcType="VARCHAR" property="employerAccount" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      autoId, companyId, employerName,
+      employerPwd, employerAddress, employerTel, employerEmail, employerAccount
+    </sql>
+
+    <select id="findEmployerByAccount" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_employer t
+        where  t.employerAccount= #{account, jdbcType = VARCHAR}
+    </select>
+
+    <select id="findEmployer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_employer
+        <where>
+            <if test="employerAccount!=null">
+                and employerAccount=#{employerAccount,jdbcType=VARCHAR}
+            </if>
+            <if test="employerPwd!=null">
+                and employerPwd=#{employerPwd,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+
+    <insert id="addEmployer" parameterType="com.gf.entity.Employer">
+        insert into t_employer(employerAccount,employerPwd,employerName,employerTel,employerEmail,employerAddress,companyId)
+        values (#{employerAccount,jdbcType=VARCHAR},#{employerPwd,jdbcType=VARCHAR},#{employerName,jdbcType=VARCHAR},#{employerTel,jdbcType=VARCHAR},#{employerEmail,jdbcType=VARCHAR},#{employerAddress,jdbcType=VARCHAR},#{companyId,jdbcType=VARCHAR})
+    </insert>
+</mapper>

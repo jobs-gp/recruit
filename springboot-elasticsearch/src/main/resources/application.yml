@@ -1,0 +1,9 @@
+mybatis:
+  typeAliasesPackage: com.gf.entity
+  mapperLocations: classpath:mapper/*.xml
+spring:
+  datasource:
+    driver-class-name: com.alibaba.druid.proxy.DruidDriver
+    url: jdbc:mysql://localhost:3306/mvc?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: root

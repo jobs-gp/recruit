@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gf.dao.IDeliveryDao">
+    <resultMap id="BaseResultMaper" type="com.gf.entity.Deliveryrecord">
+        <id column="deliverid" jdbcType="INTEGER" property="deliverid" />
+        <result column="userid" jdbcType="INTEGER" property="userid" />
+        <result column="positionid" jdbcType="INTEGER" property="positionid" />
+        <result column="resumeid" jdbcType="INTEGER" property="resumeid" />
+        <result column="realname" jdbcType="VARCHAR" property="realname" />
+        <result column="positions" jdbcType="VARCHAR" property="positions" />
+        <result column="acceptorrefuse" jdbcType="VARCHAR" property="acceptorrefuse" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      deliverid, userid, positionid, resumeid,realname,positions,
+      acceptorrefuse
+    </sql>
+
+    <select id="getRecord" resultMap="BaseResultMaper">
+        select
+        <include refid="Base_Column_List"/>
+        from t_deliveryrecord t
+        where t.positionid = #{positionid, jdbcType = VARCHAR}
+    </select>
+
+
+    <select id="findDeliverById" resultMap="BaseResultMaper">
+        select
+        <include refid="Base_Column_List"/>
+        from t_deliveryrecord
+        where deliverid=#{deliverid,jdbcType=INTEGER}
+    </select>
+    <update id="updateById" parameterType="com.gf.entity.Deliveryrecord">
+        update t_deliveryrecord
+        set acceptorrefuse = #{acceptorrefuse,jdbcType=VARCHAR}
+        where deliverid=#{deliverid,jdbcType=INTEGER}
+    </update>
+
+    <insert id="adddeliveryrecords" parameterType="com.gf.entity.Deliveryrecord">
+        insert into t_deliveryrecord(userid,positionid,resumeid,realname,positions)
+        values (#{userid,jdbcType=INTEGER},#{positionid,jdbcType=INTEGER},#{resumeid,jdbcType=INTEGER},#{realname,jdbcType=VARCHAR},#{positions,jdbcType=VARCHAR})
+    </insert>
+
+
+    <select id="selectInfoByPrimaryKey" resultMap="BaseResultMaper">
+        select
+        <include refid="Base_Column_List"/>
+        from t_deliveryrecord
+        where userid=#{userid,jdbcType=INTEGER}
+    </select>
+
+
+</mapper>

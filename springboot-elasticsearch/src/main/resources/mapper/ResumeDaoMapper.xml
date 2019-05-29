@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gf.dao.IResumeDao">
+    <resultMap id="BaseResultMap" type="com.gf.entity.Resume">
+        <id column="resumeid" jdbcType="INTEGER" property="resumeid" />
+        <result column="userid" jdbcType="INTEGER" property="userid" />
+        <result column="realname" jdbcType="VARCHAR" property="realname" />
+        <result column="birthdays" jdbcType="VARCHAR" property="birthdays" />
+        <result column="sex" jdbcType="VARCHAR" property="sex" />
+        <result column="city" jdbcType="VARCHAR" property="city" />
+        <result column="phonenum" jdbcType="INTEGER" property="phonenum" />
+        <result column="email" jdbcType="VARCHAR" property="email" />
+        <result column="school" jdbcType="VARCHAR" property="school" />
+        <result column="education" jdbcType="VARCHAR" property="education" />
+        <result column="major" jdbcType="VARCHAR" property="major" />
+        <result column="workexp" jdbcType="VARCHAR" property="workexp" />
+        <result column="positions" jdbcType="VARCHAR" property="positions" />
+        <result column="exsalary" jdbcType="VARCHAR" property="exsalary" />
+        <result column="exaddress" jdbcType="VARCHAR" property="exaddress" />
+        <result column="perdscp" jdbcType="VARCHAR" property="perdscp" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+      resumeid, userid, realname,birthdays,sex,city,phonenum,email,school,education,major,workexp,positions,exsalary,exaddress,perdscp
+    </sql>
+
+    <select id="getAllResumes" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_resume
+        where userid=#{userid,jdbcType=INTEGER}
+    </select>
+
+    <select id="getAllResumer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_resume
+        where userid=#{userid,jdbcType=INTEGER}
+    </select>
+
+    <select id="getEmployResumeDetail" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_resume
+        where resumeid=#{resumeid,jdbcType=INTEGER}
+    </select>
+
+
+    <insert id="insertResumes" parameterType="com.gf.entity.Resume">
+        insert into t_resume(realname,birthdays,sex,city,phonenum,email,school,education,major,workexp,positions,exsalary,exaddress,perdscp)
+        values (#{realname,jdbcType=VARCHAR},#{birthdays,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR},#{city,jdbcType=VARCHAR},#{phonenum,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{school,jdbcType=VARCHAR},#{education,jdbcType=VARCHAR},#{major,jdbcType=VARCHAR},#{workexp,jdbcType=VARCHAR},#{positions,jdbcType=VARCHAR},#{exsalary,jdbcType=VARCHAR},#{exaddress,jdbcType=VARCHAR},#{perdscp,jdbcType=VARCHAR})
+    </insert>
+    <select id="findResumeById" resultMap="BaseResultMap">
+      select
+        <include refid="Base_Column_List"/>
+      from t_resume
+      where resumeid=#{resumeid,jdbcType=INTEGER}
+    </select>
+    <update id="updater" parameterType="com.gf.entity.Resume">
+        update t_resume
+        set realname = #{realname,jdbcType=VARCHAR},
+        birthdays = #{birthdays,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=VARCHAR},
+        city = #{city,jdbcType=VARCHAR},
+        phonenum = #{phonenum,jdbcType=VARCHAR},
+        email = #{email,jdbcType=VARCHAR},
+        school = #{school,jdbcType=VARCHAR},
+        education = #{education,jdbcType=VARCHAR},
+        major = #{major,jdbcType=VARCHAR},
+        workexp = #{workexp,jdbcType=VARCHAR},
+        positions = #{positions,jdbcType=VARCHAR},
+        exsalary = #{exsalary,jdbcType=VARCHAR},
+        exaddress = #{exaddress,jdbcType=VARCHAR},
+        perdscp = #{perdscp,jdbcType=VARCHAR}
+        where resumeid = #{resumeid,jdbcType=INTEGER}
+    </update>
+    <delete id="deleteresume" parameterType="com.gf.entity.Resume">
+        delete from t_resume
+        where resumeid = #{resumeid,jdbcType=INTEGER}
+    </delete>
+
+    <!--<select id="findDeliverDetail" resultMap="BaseResultMap">-->
+        <!--select-->
+        <!--<include refid="Base_Column_List" />-->
+        <!--from t_resume-->
+        <!--where  userid=#{userid,jdbcType=INTEGER}-->
+    <!--</select>-->
+    <!--<select id="getAllResumes" parameterType="string" resultType="User">-->
+    <!--select * from t_resume where resumeid = #{resumeid}-->
+    <!--</select>-->
+</mapper>

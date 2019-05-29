@@ -1,0 +1,11 @@
+#mybatis:
+#  typeAliasesPackage: com.elasticsearch.jobs.jobs
+#  mapperLocations: classpath:mapper/*.xml
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/mvc
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    # 使用druid数据源
+    type: com.alibaba.druid.pool.DruidDataSource

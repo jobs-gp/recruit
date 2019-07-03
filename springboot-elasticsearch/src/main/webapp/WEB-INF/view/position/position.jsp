@@ -27,7 +27,8 @@
             <img src="../../../img/logo2.jpg" width="160px" height="80px" />
         </div>
         <div align="right" class="col-lg-6 col-md-6 col-sm-6" style="padding-top: 25px;">
-            <h5>${employ.account},你好！</h5>
+            <span style="font-size: 15px" class="glyphicon glyphicon-user"><span>${employ.account},你好！</span></span>
+            <%--<h5>${employ.account},你好！</h5>--%>
         </div>
     </div>
 </div>
@@ -44,40 +45,46 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/index.jsp">首页</a>
+                <a class="navbar-brand" href="/">首页</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="/position/getPosition"/>职位浏览<span class="sr-only">(current)</span></a>
+                    <li>
+                        <a href="/position/getPosition" class="navbar-brand"/>职位浏览</a>
                     </li>
                     <li>
-                        <a href="/resume/getResume?userid=${employ.userid}"/>我的简历</a>
+                        <a href="/resume/getResume?userid=${employ.userid}" class="navbar-brand"/>我的简历</a>
                     </li>
                     <li>
-                        <a href="/resume/addreJsp?userid=${employ.userid}"/>新增简历</a>
+                        <a href="/resume/addreJsp?userid=${employ.userid}" class="navbar-brand"/>新增简历</a>
                     </li>
                     <li>
-                        <a href="/employ/getEmployInfo"/>投递反馈</a>
+                        <a href="/employ/getEmployInfo" class="navbar-brand"/>投递反馈</a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-right" role="search">
+                <form class="navbar-form navbar-right" id="sfrom" action="/position/searchPosition?position=" method="get" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" size="35" placeholder="Search">
+                        <input type="text" id="sformp" class="form-control" size="35" placeholder="职位查询"/>
                     </div>
-                    <button type="submit" class="btn btn-default">搜索</button>
+                    <button type="button" class="btn btn-default" onclick="submitaaa();">搜索</button>
+                    <script>
+                        function submitaaa() {
+                            location.href = '/position/searchPosition?position=' + $('#sformp').val();
+                            return false;
+                        };
+                    </script>
                 </form>
             </div>
         </div>
     </nav>
 </div>
 
-    <div class="container">
+<div class="container">
     <table class=" table table-striped table-bordered table-hover">
         <tr class="text-primary">
             <th>职位编号</th>
-            <th>职位</th>
+            <th>职位名称</th>
             <th>职位详情</th>
         </tr>
         <c:forEach items="${positions}" var="p">
@@ -88,7 +95,7 @@
             </tr>
         </c:forEach>
     </table>
-    </div>
+</div>
 
 </body>
 </html>

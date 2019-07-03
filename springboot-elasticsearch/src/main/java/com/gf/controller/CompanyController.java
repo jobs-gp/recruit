@@ -76,6 +76,22 @@ public class CompanyController {
 
     }
 
+    @RequestMapping(value = "addCompanyJsp",method = RequestMethod.GET)
+    public String addCompany(){
+        return "admin/addCompany";
+    }
+    @RequestMapping(value = "addCompany",method = RequestMethod.POST)
+    public String addCompany(HttpServletRequest request){
+        String companyName = request.getParameter("companyName");
+        String companyDscp = request.getParameter("companyDscp");
+        String address = request.getParameter("address");
+        String tel = request.getParameter("tel");
+        String email = request.getParameter("email");
+        String companyId = request.getParameter("companyId");
+        companyService.insertCompany(companyName,companyDscp,address,tel,email,companyId);
+        return "redirect:/admin/login";
+    }
+
 
 
 }

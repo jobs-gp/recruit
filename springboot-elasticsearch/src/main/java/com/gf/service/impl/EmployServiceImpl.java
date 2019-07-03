@@ -6,6 +6,9 @@ import com.gf.service.IEmployService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.io.Serializable;
+import java.util.List;
+
 @Component
 public class EmployServiceImpl implements IEmployService {
 
@@ -28,5 +31,15 @@ public class EmployServiceImpl implements IEmployService {
         newEmploy.setAge(Integer.parseInt(age));
         newEmploy.setUserid(Integer.parseInt(userid));
         return employDao.addEmploy(newEmploy);
+    }
+
+    @Override
+    public List<Employ> getEmployInfom(){
+        return employDao.findEmployDetail();
+    }
+
+    @Override
+    public void deleteemploy(Serializable userid){
+        employDao.deleteemploys(userid);
     }
 }

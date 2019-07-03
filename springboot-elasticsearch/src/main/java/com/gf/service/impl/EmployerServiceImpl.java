@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpSession;
+import java.io.Serializable;
+import java.util.List;
 
 @Component
 public class EmployerServiceImpl implements IEmployerService {
@@ -41,5 +43,15 @@ public class EmployerServiceImpl implements IEmployerService {
         newEmployer.setEmployerAddress(employerAddress);
         newEmployer.setCompanyId(companyId);
         return empolyerDao.addEmployer(newEmployer);
+    }
+
+    @Override
+    public List<Employer> getEmployerInfom(){
+        return empolyerDao.getEmployer();
+    }
+
+    @Override
+    public void deleteemployer(Serializable companyId){
+        empolyerDao.deleteemployers(companyId);
     }
 }

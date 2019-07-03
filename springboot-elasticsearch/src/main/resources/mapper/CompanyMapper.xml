@@ -23,4 +23,20 @@
         from t_company t
         where t.companyId = #{companyId, jdbcType = VARCHAR}
     </select>
+
+    <select id="findAllCompany" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_company
+    </select>
+
+    <delete id="deletecompanys" parameterType="com.gf.entity.Company">
+        delete from t_company
+        where companyId = #{companyId,jdbcType=VARCHAR}
+    </delete>
+
+    <insert id="insertcompanys" parameterType="com.gf.entity.Company">
+        insert into t_company(companyName,companyDscp, address, tel, email, companyId)
+        values (#{companyName,jdbcType=VARCHAR},#{companyDscp,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},#{tel,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{companyId,jdbcType=VARCHAR})
+    </insert>
 </mapper>

@@ -25,14 +25,20 @@ public class ResumeServiceImpl implements IResumeService {
     }
 
     @Override
-    public List<Resume> getEmployResumeById(String resumeid){
+    public Resume getEmployResumeById(String resumeid){
         return resumeDao.getEmployResumeDetail(resumeid);
     }
 
 
     @Override
-    public int insertResume(String realname,String birthdays,String sex,String city,String phonenum, String email, String school, String education,String major,String workexp,String positions,String exsalary,String exaddress,String perdscp){
+    public Resume getEmp(String resumeid){
+        return resumeDao.getEmpResume(resumeid);
+    }
+
+    @Override
+    public int insertResume(String usrid,String realname,String birthdays,String sex,String city,String phonenum, String email, String school, String education,String major,String workexp,String positions,String exsalary,String exaddress,String perdscp){
         Resume resumes = new Resume();
+        resumes.setUserid(Integer.parseInt(usrid));
         resumes.setRealname(realname);
         resumes.setBirthdays(birthdays);
         resumes.setSex(sex);

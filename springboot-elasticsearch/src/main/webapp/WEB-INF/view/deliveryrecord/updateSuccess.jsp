@@ -31,7 +31,8 @@
             <img src="../../../img/logo2.jpg" width="160px" height="80px" />
         </div>
         <div align="right" class="col-lg-6 col-md-6 col-sm-6" style="padding-top: 25px;">
-            <h5>${employ.account},你好！</h5>
+            <span style="font-size: 15px" class="glyphicon glyphicon-user"><span>${employ.account},你好！</span></span>
+            <%--<h5>${employ.account},你好！</h5>--%>
         </div>
     </div>
 </div>
@@ -48,19 +49,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/index.jsp">首页</a>
+                <a class="navbar-brand" href="/">首页</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active">
                         <a href="/position/getPosition"/>职位浏览<span class="sr-only">(current)</span></a>
-                    </li>
-                    <li>
-                        <a href="#">XX</a>
-                    </li>
-                    <li>
-                        <a href="#">XX</a>
                     </li>
                 </ul>
                 <form class="navbar-form navbar-right" role="search">

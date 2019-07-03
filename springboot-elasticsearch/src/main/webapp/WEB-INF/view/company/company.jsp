@@ -27,7 +27,8 @@
             <img src="../../../img/logo2.jpg" width="160px" height="80px" />
         </div>
         <div align="right" class="col-lg-6 col-md-6 col-sm-6" style="padding-top: 25px;">
-            <h5>${employer.employerAccount},你好！</h5>
+            <span style="font-size: 15px" class="glyphicon glyphicon-user"><span>${employer.employerAccount},你好！</span></span>
+            <%--<h5>${employer.employerAccount},你好！</h5>--%>
         </div>
     </div>
 </div>
@@ -44,16 +45,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/index.jsp">首页</a>
+                <a class="navbar-brand" href="/">首页</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/position/hrGetPositions?companyId=${employer.companyId}" />公司职位</a>
+                        <a href="/position/hrGetPositions?companyId=${employer.companyId}" class="navbar-brand" />公司职位</a>
                     </li>
                     <li>
-                        <a href="/position/addPositionJsp?companyId=${employer.companyId}" >增加职位</a>
+                        <a href="/position/addPositionJsp?companyId=${employer.companyId}" class="navbar-brand" />增加职位</a>
                     </li>
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
@@ -71,13 +72,13 @@
 <div class="text-primary" align="center" >
     <h2>${company.companyName}</h2>
 </div>
-    <div class="container" style="margin-top: 25px">
-        <table class="table  table-striped table-bordered table-hover" align="center" valign="center" border="1" style="margin-top: 15px">
-            <tr class="text-primary">
-                <th>职位编号</th>
-                <th>职位</th>
-                <th>职位投递详情</th>
-            </tr>
+<div class="container" style="margin-top: 25px">
+    <table class="table  table-striped table-bordered table-hover" align="center" valign="center" border="1" style="margin-top: 15px">
+        <tr class="text-primary">
+            <th>职位编号</th>
+            <th>职位</th>
+            <th>职位投递详情</th>
+        </tr>
         <c:forEach items="${company.positionList}" var="c">
             <tr>
                 <td>${c.positionid}</td>
@@ -85,18 +86,18 @@
                 <td><a href="/position/getCompanyPositionDetail?positionid=${c.positionid}" class="btn btn-primary">职位投递详情</a></td>
             </tr>
         </c:forEach>
-        </table>
-    </div>
+    </table>
+</div>
 
-    <%--<div class="container">--%>
-        <%--<a href="/position/addPositionJsp" class="btn btn-primary">增加职位</a>--%>
-        <%--<span>--%>
-            <%--<a href="/position//updatepositionJsp?positionid=${c.position}" class="btn btn-primary">修改职位</a>--%>
-        <%--</span>--%>
-        <%--<span>--%>
-            <%--<a href="/position//deletePosition?positionid=${c.position}" class="btn btn-primary">删除职位</a>--%>
-        <%--</span>--%>
-    <%--</div>--%>
+<%--<div class="container">--%>
+<%--<a href="/position/addPositionJsp" class="btn btn-primary">增加职位</a>--%>
+<%--<span>--%>
+<%--<a href="/position//updatepositionJsp?positionid=${c.position}" class="btn btn-primary">修改职位</a>--%>
+<%--</span>--%>
+<%--<span>--%>
+<%--<a href="/position//deletePosition?positionid=${c.position}" class="btn btn-primary">删除职位</a>--%>
+<%--</span>--%>
+<%--</div>--%>
 
 </body>
 </html>

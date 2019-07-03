@@ -42,7 +42,8 @@
         </div>
         <div align="right" class="col-lg-6 col-md-6 col-sm-6" style="padding-top: 25px;">
             <%--<a href="#" class="btn btn-primary btn-large">登录</a>--%>
-            <h5>${employ.account},你好！</h5>
+            <span style="font-size: 15px" class="glyphicon glyphicon-user"><span>${employ.account},你好！</span></span>
+            <%--<h5>${employ.account},你好！</h5>--%>
         </div>
     </div>
 </div>
@@ -59,29 +60,35 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/index.jsp">首页</a>
+                <a class="navbar-brand" href="/">首页</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="/position/getPosition"/>职位浏览<span class="sr-only">(current)</span></a>
+                    <li>
+                        <a href="/position/getPosition" class="navbar-brand"/>职位浏览</a>
                     </li>
                     <li>
-                        <a href="/resume/getResume?userid=${employ.userid}"/>我的简历</a>
+                        <a href="/resume/getResume?userid=${employ.userid}" class="navbar-brand"/>我的简历</a>
                     </li>
                     <li>
-                        <a href="/resume/addreJsp?userid=${employ.userid}"/>新增简历</a>
+                        <a href="/resume/addreJsp?userid=${employ.userid}" class="navbar-brand"/>新增简历</a>
                     </li>
                     <li>
-                        <a href="/employ/getEmployInfo"/>投递反馈</a>
+                        <a href="/employ/getEmployInfo" class="navbar-brand"/>投递反馈</a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-right" role="search">
+                <form class="navbar-form navbar-right" id="sfrom" action="/position/searchPosition?position=" method="get" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" size="35" placeholder="Search">
+                        <input type="text" id="sformp" class="form-control" size="35" placeholder="职位查询"/>
                     </div>
-                    <button type="submit" class="btn btn-default">搜索</button>
+                    <button type="button" class="btn btn-default" onclick="submitaaa();">搜索</button>
+                    <script>
+                        function submitaaa() {
+                            location.href = '/position/searchPosition?position=' + $('#sformp').val();
+                            return false;
+                        };
+                    </script>
                 </form>
             </div>
         </div>
@@ -89,60 +96,60 @@
 </div>
 
 <div class="container">
-<form id="listResume" method="post">
+    <form id="listResume" method="post">
 
-<table align="center" border="1" class="table table-striped table-bordered table-hover">
+        <table align="center" border="1" class="table table-striped table-bordered table-hover">
 
-    <tr class="text-primary">
-        <th>简历编号</th>
-        <th>用户编号</th>
-        <th>姓名</th>
-        <th>生日</th>
-        <th>性别</th>
-        <th>所在城市</th>
-        <th>电话号</th>
-        <th>邮箱</th>
-        <th>学校名称</th>
-        <th>学历</th>
-        <th>专业</th>
-        <th>工作经验</th>
-        <th>期望职位</th>
-        <th>期望薪资</th>
-        <th>期望工作地点</th>
-        <th>个人描述</th>
-        <th>修改简历</th>
-        <th>删除简历</th>
-    </tr>
+            <tr class="text-primary">
+                <%--<th>简历编号</th>--%>
+                <%--<th>用户编号</th>--%>
+                <th>姓名</th>
+                <%--<th>生日</th>--%>
+                <%--<th>性别</th>--%>
+                <th>所在城市</th>
+                <th>电话号</th>
+                <%--<th>邮箱</th>--%>
+                <%--<th>学校名称</th>--%>
+                <th>学历</th>
+                <th>专业</th>
+                <%--<th>工作经验</th>--%>
+                <th>期望职位</th>
+                <th>期望薪资</th>
+                <th>期望工作地点</th>
+                <th>简历详情</th>
+                <th>修改简历</th>
+                <th>删除简历</th>
+            </tr>
 
-    <c:forEach items="${resume}" var="resume">
-        <tbody>
-        <tr >
-            <td>${resume.resumeid}</td>
-            <td>${resume.userid}</td>
-            <td>${resume.realname}</td>
-            <td>${resume.birthdays}</td>
-            <td>${resume.sex}</td>
-            <td>${resume.city}</td>
-            <td>${resume.phonenum}</td>
-            <td>${resume.email}</td>
-            <td>${resume.school}</td>
-            <td>${resume.education}</td>
-            <td>${resume.major}</td>
-            <td>${resume.workexp}</td>
-            <td>${resume.positions}</td>
-            <td>${resume.exsalary}</td>
-            <td>${resume.exaddress}</td>
-            <td>${resume.perdscp}</td>
-            <td><input type="button" value="修改" class="btn btn-primary " onclick="updateResume(${resume.resumeid});"/></td>
-            <td><a href="/resume/deleteresume?id=${resume.resumeid}" class="btn btn-primary ">删除</a></td>
-        </tr>
-        </tbody>
-    </c:forEach>
+            <c:forEach items="${resume}" var="resume">
+                <tbody>
+                <tr >
+                        <%--<td>${resume.resumeid}</td>--%>
+                        <%--<td>${resume.userid}</td>--%>
+                    <td>${resume.realname}</td>
+                        <%--<td>${resume.birthdays}</td>--%>
+                        <%--<td>${resume.sex}</td>--%>
+                    <td>${resume.city}</td>
+                    <td>${resume.phonenum}</td>
+                        <%--<td>${resume.email}</td>--%>
+                        <%--<td>${resume.school}</td>--%>
+                    <td>${resume.education}</td>
+                    <td>${resume.major}</td>
+                        <%--<td>${resume.workexp}</td>--%>
+                    <td>${resume.positions}</td>
+                    <td>${resume.exsalary}</td>
+                    <td>${resume.exaddress}</td>
+                    <td><a href="/resume/perResume?resumeid=${resume.resumeid}" class="btn btn-primary">简历详情</a></td>
+                    <td><input type="button" value="修改" class="btn btn-primary " onclick="updateResume(${resume.resumeid});"/></td>
+                    <td><a href="/resume/deleteresume?id=${resume.resumeid}" class="btn btn-primary ">删除</a></td>
+                </tr>
+                </tbody>
+            </c:forEach>
 
-        <%--<a href="/resume/addreJsp?userid=${employ.userid}">新增简历</a>--%>
+            <%--<a href="/resume/addreJsp?userid=${employ.userid}">新增简历</a>--%>
 
-</table>
-</form>
+        </table>
+    </form>
 </div>
 </body>
 </html>

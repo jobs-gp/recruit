@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/index.jsp">首页</a>
+                <a class="navbar-brand" href="/">首页</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -59,11 +59,13 @@
         </div>
     </nav>
 </div>
-<b class="text-danger">
-登录失败!请检查账号或密码出错！
-${message}
-</b>
-<br >
-<a href="<%=path%>/index.jsp" rel="external nofollow" style="text-decoration: none">返回</a>
+<div class="container">
+    <b class="text-danger" style="font-size: 20px;font-family: 华文楷体">
+        登录失败!
+        ${message}
+    </b>
+    <br >
+    <a href="<%=path%>/index.jsp" rel="external nofollow" style="text-decoration: none;font-family: 华文楷体">返回</a>
+</div>
 </body>
 </html>

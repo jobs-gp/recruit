@@ -49,9 +49,17 @@ public class ResumeController {
     @RequestMapping(value = "getEmployResume",method = RequestMethod.GET)
     public String getEmployResume(HttpServletRequest request){
         String resumeid = request.getParameter("resumeid");
-        List<Resume> employresume = resumeService.getEmployResumeById(resumeid);
+        Resume employresume = resumeService.getEmployResumeById(resumeid);
         request.setAttribute("employresume",employresume);
         return "resume/getemployresume";
+    }
+
+    @RequestMapping(value = "perResume",method = RequestMethod.GET)
+    public String perRusume(HttpServletRequest request){
+        String resumeid = request.getParameter("resumeid");
+        Resume emp = resumeService.getEmp(resumeid);
+        request.setAttribute("emp",emp);
+        return "resume/employGetOwnResume";
     }
 
 
@@ -82,7 +90,7 @@ public class ResumeController {
         String exaddress = request.getParameter("exaddress");
         String perdscp = request.getParameter("perdscp");
 
-        int addresume = resumeService.insertResume(realname,birthdays,sex,city,phonenum,email,school,education,major,workexp,positions,exsalary,exaddress,perdscp);
+        int addresume = resumeService.insertResume(userid,realname,birthdays,sex,city,phonenum,email,school,education,major,workexp,positions,exsalary,exaddress,perdscp);
         return "redirect:/employ/getEmployInfo";
     }
 

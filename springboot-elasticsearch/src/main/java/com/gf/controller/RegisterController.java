@@ -31,22 +31,7 @@ public class RegisterController {
         String account = request.getParameter("account");
         String pwd = request.getParameter("pwd");
         String realname = request.getParameter("realname");
-
-//        try {
-//            //URL链接中文参数乱码的若干处理方法
-//            realname = new String(realname.getBytes("ISO-8859-1"), "UTF-8");
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
-
         String sex = request.getParameter("sex");
-
-//        try {
-//            //URL链接中文参数乱码的若干处理方法
-//            sex = new String(sex.getBytes("ISO-8859-1"), "UTF-8");
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
         String age = request.getParameter("age");
         String userid = request.getParameter("userid");
 
@@ -73,3 +58,9 @@ public class RegisterController {
     }
 
 }
+//        try {
+//            //URL链接中文参数乱码的若干处理方法
+//            realname = new String(realname.getBytes("ISO-8859-1"), "UTF-8");
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }

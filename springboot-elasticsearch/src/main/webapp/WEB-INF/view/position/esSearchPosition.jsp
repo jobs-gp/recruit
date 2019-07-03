@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf8">
-    <title>ES搜索职位</title>
+    <title>搜索职位</title>
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -47,7 +47,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/index.jsp">首页</a>
+                <a class="navbar-brand" href="/">首页</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -65,11 +65,17 @@
                         <a href="/employ/getEmployInfo" class="navbar-brand"/>投递反馈</a>
                     </li>
                 </ul>
-                <form class="navbar-form navbar-right" role="search">
+                <form class="navbar-form navbar-right" id="sfrom" action="/position/searchPosition?position=" method="get" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control" size="35" placeholder="Search">
+                        <input type="text" id="sformp" class="form-control" size="35" placeholder="职位查询"/>
                     </div>
-                    <button type="submit" class="btn btn-default">搜索</button>
+                    <button type="button" class="btn btn-default" onclick="submitaaa();">搜索</button>
+                    <script>
+                        function submitaaa() {
+                            location.href = '/position/searchPosition?position=' + $('#sformp').val();
+                            return false;
+                        };
+                    </script>
                 </form>
             </div>
         </div>
@@ -83,7 +89,7 @@
             <th>职位描述</th>
             <th>职位要求</th>
             <th>职位薪资</th>
-            <th>练习电话</th>
+            <%--<th>联系电话</th>--%>
             <th>工作地址</th>
             <th>发布时间</th>
             <th>职位详情</th>
@@ -94,7 +100,7 @@
                 <td>${s.posdes}</td>
                 <td>${s.posreq}</td>
                 <td>${s.possal}</td>
-                <td>${s.posphone}</td>
+                <%--<td>${s.posphone}</td>--%>
                 <td>${s.posloc}</td>
                 <td>${s.posdate}</td>
                 <td><a href="/position/getPersonPosition?positionid=${s.positionid}" class="btn btn-primary "/>职位详情</td>

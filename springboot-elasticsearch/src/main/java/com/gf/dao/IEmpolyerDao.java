@@ -3,6 +3,8 @@ package com.gf.dao;
 import com.gf.entity.Employer;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface IEmpolyerDao {
 
     /**
@@ -17,6 +19,9 @@ public interface IEmpolyerDao {
 
     int addEmployer(Employer newEmployer);
 
+    List<Employer> getEmployer();
+
+    void deleteemployers(java.io.Serializable companyId);
 
 //    List<User> getAllUsers();
 //    //接口形式定义了数据库操作方法

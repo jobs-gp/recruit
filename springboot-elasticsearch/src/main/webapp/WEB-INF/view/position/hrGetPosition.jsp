@@ -27,7 +27,8 @@
             <img src="../../../img/logo2.jpg" width="160px" height="80px" />
         </div>
         <div align="right" class="col-lg-6 col-md-6 col-sm-6" style="padding-top: 25px;">
-            <h5>${employer.employerAccount},你好！</h5>
+            <span style="font-size: 15px" class="glyphicon glyphicon-user"><span>${employer.employerAccount},你好！</span></span>
+            <%--<h5>${employer.employerAccount},你好！</h5>--%>
         </div>
     </div>
 </div>
@@ -44,16 +45,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/index.jsp">首页</a>
+                <a class="navbar-brand" href="/">首页</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/position/hrGetPositions?companyId=${employer.companyId}" />公司职位</a>
+                        <a href="/position/hrGetPositions?companyId=${employer.companyId}" class="navbar-brand"/>公司职位</a>
                     </li>
                     <li>
-                        <a href="/position/addPositionJsp?companyId=${employer.companyId}" >增加职位</a>
+                        <a href="/position/addPositionJsp?companyId=${employer.companyId}" class="navbar-brand"/>增加职位</a>
                     </li>
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
@@ -75,8 +76,8 @@
             <th>职位类型</th>
             <th>发布时间</th>
             <th>职位数量</th>
-            <th>职位描述</th>
-            <th>职位要求</th>
+            <%--<th>职位描述</th>--%>
+            <%--<th>职位要求</th>--%>
             <th>职位薪资</th>
             <th>联系方式</th>
             <th>工作地址</th>
@@ -90,12 +91,12 @@
                 <td>${p.postype}</td>
                 <td>${p.posdate}</td>
                 <td>${p.posnum}</td>
-                <td>${p.posdes}</td>
-                <td>${p.posreq}</td>
+                    <%--<td>${p.posdes}</td>--%>
+                    <%--<td>${p.posreq}</td>--%>
                 <td>${p.possal}</td>
                 <td>${p.posphone}</td>
                 <td>${p.posloc}</td>
-                <%--<td><a href="/position/addPositionJsp?=${employer.companyId}" class="btn btn-primary "/>增加职位</td>--%>
+                    <%--<td><a href="/position/addPositionJsp?=${employer.companyId}" class="btn btn-primary "/>增加职位</td>--%>
                 <td><a href="/position//updatepositionJsp?positionid=${p.positionid}" class="btn btn-primary "/>修改职位</td>
                 <td><a href="/position//deletePosition?id=${p.positionid}" class="btn btn-primary "/>删除职位</td>
             </tr>

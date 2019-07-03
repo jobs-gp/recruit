@@ -25,19 +25,19 @@ public class DeliveryrecordController {
         String resumeid = request.getParameter("resumeid");
         String userid= request.getParameter("userid");
         String realname = request.getParameter("realname");
-        try {
-            //URL链接中文参数乱码的若干处理方法
-            realname = new String(realname.getBytes("ISO-8859-1"), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            //URL链接中文参数乱码的若干处理方法
+//            realname = new String(realname.getBytes("ISO-8859-1"), "UTF-8");
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
         String positions = request.getParameter("positions");
-        try {
-            //URL链接中文参数乱码的若干处理方法
-            positions = new String(positions.getBytes("ISO-8859-1"), "UTF-8");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            //URL链接中文参数乱码的若干处理方法
+//            positions = new String(positions.getBytes("ISO-8859-1"), "UTF-8");
+//        } catch (UnsupportedEncodingException e) {
+//            e.printStackTrace();
+//        }
         deliveryrecordService.adddeliveryrecord(positionid,resumeid,userid,realname,positions);
         return "deliveryrecord/addSuccess";
     }

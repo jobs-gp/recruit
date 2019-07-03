@@ -26,7 +26,8 @@
             <img src="../../../img/logo2.jpg" width="160px" height="80px" />
         </div>
         <div align="right" class="col-lg-6 col-md-6 col-sm-6" style="padding-top: 25px;">
-            <h5>${employ.account},你好！</h5>
+            <span style="font-size: 15px" class="glyphicon glyphicon-user"><span>${employ.account},你好！</span></span>
+            <%--<h5>${employ.account},你好！</h5>--%>
         </div>
     </div>
 </div>
@@ -43,41 +44,41 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/index.jsp">首页</a>
+                <a class="navbar-brand" href="/">首页</a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="/position/getPosition"/>职位浏览<span class="sr-only">(current)</span></a>
+                        <a href="/position/getPosition" class="navbar-brand"/>职位浏览</a>
                     </li>
                     <li>
-                        <a href="/resume/getResume?userid=${employ.userid}"/>我的简历</a>
+                        <a href="/resume/getResume?userid=${employ.userid}" class="navbar-brand"/>我的简历</a>
                     </li>
                     <li>
-                        <a href="/resume/addreJsp?userid=${employ.userid}"/>新增简历</a>
+                        <a href="/resume/addreJsp?userid=${employ.userid}" class="navbar-brand"/>新增简历</a>
                     </li>
                     <%--<li class="dropdown">--%>
-                        <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">热门职位 <span class="caret"></span></a>--%>
-                        <%--<ul class="dropdown-menu">--%>
-                            <%--<li>--%>
-                                <%--<a href="#">安卓开发工程师</a>--%>
-                            <%--</li>--%>
-                            <%--<li>--%>
-                                <%--<a href="#">ios开发工程师</a>--%>
-                            <%--</li>--%>
-                            <%--<li>--%>
-                                <%--<a href="#">大数据工程师</a>--%>
-                            <%--</li>--%>
-                            <%--<li role="separator" class="divider"></li>--%>
-                            <%--<li>--%>
-                                <%--<a href="#">java高级工程师</a>--%>
-                            <%--</li>--%>
-                            <%--<li role="separator" class="divider"></li>--%>
-                            <%--<li>--%>
-                                <%--<a href="#">算法工程师</a>--%>
-                            <%--</li>--%>
-                        <%--</ul>--%>
+                    <%--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">热门职位 <span class="caret"></span></a>--%>
+                    <%--<ul class="dropdown-menu">--%>
+                    <%--<li>--%>
+                    <%--<a href="#">安卓开发工程师</a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                    <%--<a href="#">ios开发工程师</a>--%>
+                    <%--</li>--%>
+                    <%--<li>--%>
+                    <%--<a href="#">大数据工程师</a>--%>
+                    <%--</li>--%>
+                    <%--<li role="separator" class="divider"></li>--%>
+                    <%--<li>--%>
+                    <%--<a href="#">java高级工程师</a>--%>
+                    <%--</li>--%>
+                    <%--<li role="separator" class="divider"></li>--%>
+                    <%--<li>--%>
+                    <%--<a href="#">算法工程师</a>--%>
+                    <%--</li>--%>
+                    <%--</ul>--%>
                     <%--</li>--%>
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
@@ -92,12 +93,12 @@
 </div>
 
 <div class="container" >
-    <h3 style="color: red">
-        投递成功！
-    </h3>
-    <h2 style="color: yellow">
-        <a href="/position/getPosition" class="text-success">返回职位列表</a>
-    </h2>
+    <h2 style="color: red;font-family: 华文楷体">
+        恭喜您投递成功！
+    </h2><br>
+    <h4 style="font-family: 华文楷体">
+        <a href="/position/getPosition" class="text-success" style="text-decoration: none">返回职位列表</a>
+    </h4>
 </div>
 </body>
 </html>

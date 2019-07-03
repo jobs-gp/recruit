@@ -4,6 +4,8 @@ package com.gf.dao;
 import com.gf.entity.Company;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface ICompanyDao {
 
 
@@ -13,4 +15,10 @@ public interface ICompanyDao {
      * @return
      */
     Company findCompanyById(@Param("companyId") String companyId);
+
+    List<Company> findAllCompany();
+
+    void deletecompanys(java.io.Serializable companyId);
+
+    int insertcompanys(Company companys);
 }

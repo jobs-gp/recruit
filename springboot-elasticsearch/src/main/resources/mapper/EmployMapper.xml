@@ -33,4 +33,15 @@
         insert into t_employ(account,pwd,realname,sex,age,userid)
         values (#{account,jdbcType=VARCHAR},#{pwd,jdbcType=VARCHAR},#{realName,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR},#{age,jdbcType=INTEGER},#{userid,jdbcType=INTEGER})
     </insert>
+
+    <select id="findEmployDetail" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_employ
+    </select>
+
+    <delete id="deleteemploys" parameterType="com.gf.entity.Employ">
+        delete from t_employ
+        where userid = #{userid,jdbcType=INTEGER}
+    </delete>
 </mapper>

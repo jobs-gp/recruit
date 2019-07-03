@@ -45,10 +45,16 @@
         where resumeid=#{resumeid,jdbcType=INTEGER}
     </select>
 
+    <select id="getEmpResume" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from t_resume
+        where resumeid=#{resumeid,jdbcType=INTEGER}
+    </select>
 
     <insert id="insertResumes" parameterType="com.gf.entity.Resume">
-        insert into t_resume(realname,birthdays,sex,city,phonenum,email,school,education,major,workexp,positions,exsalary,exaddress,perdscp)
-        values (#{realname,jdbcType=VARCHAR},#{birthdays,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR},#{city,jdbcType=VARCHAR},#{phonenum,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{school,jdbcType=VARCHAR},#{education,jdbcType=VARCHAR},#{major,jdbcType=VARCHAR},#{workexp,jdbcType=VARCHAR},#{positions,jdbcType=VARCHAR},#{exsalary,jdbcType=VARCHAR},#{exaddress,jdbcType=VARCHAR},#{perdscp,jdbcType=VARCHAR})
+        insert into t_resume(userid,realname,birthdays,sex,city,phonenum,email,school,education,major,workexp,positions,exsalary,exaddress,perdscp)
+        values (#{userid,jdbcType=INTEGER},#{realname,jdbcType=VARCHAR},#{birthdays,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR},#{city,jdbcType=VARCHAR},#{phonenum,jdbcType=VARCHAR},#{email,jdbcType=VARCHAR},#{school,jdbcType=VARCHAR},#{education,jdbcType=VARCHAR},#{major,jdbcType=VARCHAR},#{workexp,jdbcType=VARCHAR},#{positions,jdbcType=VARCHAR},#{exsalary,jdbcType=VARCHAR},#{exaddress,jdbcType=VARCHAR},#{perdscp,jdbcType=VARCHAR})
     </insert>
     <select id="findResumeById" resultMap="BaseResultMap">
       select

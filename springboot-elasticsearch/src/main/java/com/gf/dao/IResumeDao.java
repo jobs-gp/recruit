@@ -12,7 +12,9 @@ public interface IResumeDao {
 
     List<Resume> getAllResumer(@Param("positions") String positions, @Param("userid") String userid);
 
-    List<Resume> getEmployResumeDetail(@Param("resumeid") String resumeid);
+    Resume getEmployResumeDetail(@Param("resumeid") String resumeid);
+
+    Resume getEmpResume(@org.apache.ibatis.annotations.Param("resumeid") String resumeid);
 
     int insertResumes(Resume resumes);
     //接口形式定义了数据库操作方法
